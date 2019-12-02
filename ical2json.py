@@ -11,7 +11,7 @@ BERLIN = pytz.timezone("Europe/Berlin")
 def get_events():
     start = datetime.datetime.utcnow() - datetime.timedelta(hours=10)
     end = datetime.datetime.utcnow() + datetime.timedelta(days=100)
-    events = icalevents.events('https://eigenbaukombinat.de/all.ics', 
+    events = icalevents.events('https://kalender.eigenbaukombinat.de/public/all.ics', 
                                start=BERLIN.localize(start), 
                                end=BERLIN.localize(end))
     next_events = []
