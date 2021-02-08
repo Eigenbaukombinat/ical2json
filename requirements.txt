@@ -3,7 +3,7 @@ DateTime==4.3
 decorator==4.4.1
 Flask==1.0.2
 gocept.cache==3.1
-httplib2==0.18.0
+httplib2==0.19.0
 icalendar==4.0.3
 icalevents==0.1.19
 itsdangerous==1.1.0
