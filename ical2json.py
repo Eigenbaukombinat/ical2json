@@ -18,14 +18,20 @@ def get_events():
     for event in events:
         startdt = event.start.astimezone(BERLIN)
         enddt = event.end.astimezone(BERLIN)
-        next_events.append(dict(
+        eventdata = dict(
             summary=event.summary,
             sortdate=startdt.strftime('%Y%m%d%H%M'),
             startdate=startdt.strftime('%d.%m.%Y'),
             starttime=startdt.strftime('%H:%M'),
             enddate=enddt.strftime('%d.%m.%Y'),
             endtime=enddt.strftime('%H:%M'),
-            all_day=event.all_day))
+            all_day=event.all_day)
+        if event.description and event.description.startswith('http'):
+            eventurl = event.description
+        else:
+            eventurl = None
+        eventdata['url'] = eventurl
+        next_events.append(eventdata)
         
     next_events = sorted(next_events, key=lambda ev: ev['sortdate'])
     return next_events
